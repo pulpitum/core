@@ -2,12 +2,20 @@
     "name": "pulpitum/core",
     "description": "",
     "authors": [{
-        "name": "Pulpitum",
+        "name": "inluxc",
         "email": "inluxc@gmail.com"
+    },
+    {
+        "name": "rguedes",
+        "email": "rolandoguedes@gmail.com"
     }],
     "require": {
         "php": ">=5.3.0",
-        "illuminate/support": "4.1.*"
+        "illuminate/support": "4.1.*",
+        "purposemedia/menu": "dev-master",
+        "teepluss/theme": "dev-master",
+        "anahkiasen/former": "dev-master",
+        "cartalyst/sentry": "2.1.*"
     },
     "autoload": {
         "classmap": [

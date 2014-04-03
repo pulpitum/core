@@ -1,4 +1,5 @@
-<?php
+<?php namespace Pulpitum\Core\Controllers
+
 
 class BackendController extends Controller {
 
@@ -19,5 +20,10 @@ class BackendController extends Controller {
         // Using theme as a global.
         $this->theme = Theme::uses('backend')->layout('default');
     }
+
+    public function getIndex(){
+
+        
+    }    
 
 }

@@ -1,4 +1,5 @@
-<?php
+<?php namespace Pulpitum\Core\Controllers
+
 
 class FrontendController extends Controller {
 
@@ -18,6 +19,11 @@ class FrontendController extends Controller {
     {
         // Using theme as a global.
         $this->theme = Theme::uses('frontend')->layout('default');
+    }
+
+    public function getIndex(){
+
+        
     }
 
 }

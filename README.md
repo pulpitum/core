@@ -10,13 +10,12 @@ How to install Pulpitum:
 Install Laravel
 composer create-project laravel/laravel pulpitum --prefer-dist
 
-Add Core package to laravel:
-Edit composer.conf and add the following, packages to the require json key.
+Add necessary packages to laravel composer.conf to the require json key.
 
     "purposemedia/menu": "dev-master",
     "teepluss/theme": "dev-master",
     "anahkiasen/former": "dev-master",
     "cartalyst/sentry": "2.1.*",
-    "pulpitum/core": "dev-master"
+    "pulpitum/core"
 
 Save and execute "composer update".

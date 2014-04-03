@@ -17,6 +17,6 @@ Edit composer.conf and add the following, packages to the require json key.
     "teepluss/theme": "dev-master",
     "anahkiasen/former": "dev-master",
     "cartalyst/sentry": "2.1.*",
-    "pulpitum/core"
+    "pulpitum/core": "dev-master"
 
 Save and execute "composer update".

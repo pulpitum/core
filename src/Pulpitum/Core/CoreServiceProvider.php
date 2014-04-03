@@ -1,4 +1,4 @@
-<?php namespace Plat\Core;
+<?php namespace Pulpitum\Core;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -18,7 +18,7 @@ class CoreServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('plat/core');
+		$this->package('pulpitum/core');
 	}
 
 	/**

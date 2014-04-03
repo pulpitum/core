@@ -8,7 +8,19 @@ This is the core package of the platform, here you will this the tools that make
 How to install Pulpitum:
 
 Install Laravel:
+
 ```composer create-project laravel/laravel pulpitum --prefer-dist```
+
+Add the following lines before require:
+
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/pulpitum/core.git"
+        }
+    ],
+
+
 
 In the require key of composer.json file add the following line:
 

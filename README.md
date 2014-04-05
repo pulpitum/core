@@ -28,4 +28,28 @@ In the require key of composer.json file add the following line:
 
 Save and execute ```composer update```
 
+
+The you have to insert the following in tyo app/config.php
+
+Provider array:
+'Purposemedia\Menu\MenuServiceProvider',
+'Teepluss\Theme\ThemeServiceProvider',
+'Former\FormerServiceProvider',
+'Cartalyst\Sentry\SentryServiceProvider',
+
+Aliases array:
+'Menu'      => 'Purposemedia\Menu\Facades\Menu',
+'Theme' => 'Teepluss\Theme\Facades\Theme',
+'Former' => 'Former\Facades\Former',
+'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+
+
+The run the following
+
+php artisan config:publish teepluss/theme
+php artisan config:publish anahkiasen/former
+php artisan migrate --package=cartalyst/sentry
+php artisan config:publish cartalyst/sentry
+
+
 NOTE: This package is under heavy developement, ist not yep in beta release.

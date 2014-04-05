@@ -27,5 +27,5 @@
             "Pulpitum\\Core\\": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }

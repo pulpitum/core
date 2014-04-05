@@ -29,7 +29,9 @@ In the require key of composer.json file add the following line:
 Save and execute ```composer update```
 
 
-The you have to insert the following in tyo app/config.php
+Now configure your database in app/config/database.php
+
+The you have to insert the following into app/config/app.php
 
 Provider array:
 

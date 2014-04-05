@@ -24,6 +24,6 @@ Add the following lines before require:
 
 In the require key of composer.json file add the following line:
 
-    "ppulpitum/core": "dev-master"
+    "pulpitum/core": "dev-master"
 
 Save and execute ```composer update```

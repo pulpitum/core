@@ -37,13 +37,14 @@ Provider array:
     'Teepluss\Theme\ThemeServiceProvider',
     'Former\FormerServiceProvider',
     'Cartalyst\Sentry\SentryServiceProvider',
+    'Pulpitum\Core\CoreServiceProvider',
 
 Aliases array:
 
-    'Menu'      => 'Purposemedia\Menu\Facades\Menu',
-    'Theme' => 'Teepluss\Theme\Facades\Theme',
-    'Former' => 'Former\Facades\Former',
-    'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+    'Menu'       => 'Purposemedia\Menu\Facades\Menu',
+    'Theme'      => 'Teepluss\Theme\Facades\Theme',
+    'Former'     => 'Former\Facades\Former',
+    'Sentry'     => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 
 
 The run the following

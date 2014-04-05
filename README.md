@@ -27,3 +27,5 @@ In the require key of composer.json file add the following line:
     "pulpitum/core": "dev-master"
 
 Save and execute ```composer update```
+
+NOTE: This package is under heavy developement, ist not yep in beta release.

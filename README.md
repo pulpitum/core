@@ -56,5 +56,12 @@ The run the following
     php artisan migrate --package=cartalyst/sentry
     php artisan config:publish cartalyst/sentry
 
+To get Pulpitum themes
+
+move public/themes, then run the following commands:
+
+    git clone https://github.com/pulpitum/frontendTheme.git
+    git clone https://github.com/pulpitum/backendTheme.git
+
 
 NOTE: This package is under heavy developement, is not yep in beta release.

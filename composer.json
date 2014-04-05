@@ -21,7 +21,6 @@
         "classmap": [
             "src/migrations",
             "src/controllers",
-            "src/models"
         ],
         "psr-0": {
             "Pulpitum\\Core\\": "src/"

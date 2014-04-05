@@ -57,4 +57,4 @@ The run the following
     php artisan config:publish cartalyst/sentry
 
 
-NOTE: This package is under heavy developement, ist not yep in beta release.
+NOTE: This package is under heavy developement, is not yep in beta release.

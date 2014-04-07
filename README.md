@@ -16,6 +16,7 @@ Add the following lines before require:
     "repositories": [
         {
             "type": "vcs",
+            "name": "pulpitum/core",
             "url": "https://github.com/pulpitum/core.git"
         }
     ],

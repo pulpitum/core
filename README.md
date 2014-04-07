@@ -66,8 +66,8 @@ To get Pulpitum themes
 
 move public/themes, then run the following commands:
 
-    git clone https://github.com/pulpitum/frontendTheme.git
-    git clone https://github.com/pulpitum/backendTheme.git
+    git clone https://github.com/pulpitum/frontendTheme.git public/themes/frontend
+    git clone https://github.com/pulpitum/backendTheme.git public/themes/backend
 
 
 NOTE: This package is under heavy developement, is not yep in beta release.

@@ -26,6 +26,11 @@ Add the following lines before require:
 In the require key of composer.json file add the following line:
 
     "pulpitum/core": "dev-master"
+    
+    
+Change the minimum stability to dev.
+
+    "minimum-stability": "dev"
 
 Save and execute ```composer update```
 

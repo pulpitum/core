@@ -4,4 +4,4 @@ Route::get('/', array('as' => 'home', 'uses' => 'Pulpitum\Core\Controllers\Front
 
 
 //Backend Routes
-Route::get('/admin', array('as' => 'admin', 'uses' => 'Pulpitum\Core\Controllers\BackendController@getIndex'));
+Route::get('/admin', array('as' => 'admin', 'uses' => 'Pulpitum\Core\Controllers\Admin\BackendController@getIndex'));

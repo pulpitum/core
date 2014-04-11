@@ -19,6 +19,7 @@ class CoreServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->package('pulpitum/core');
+		include __DIR__.'/../../filters.php';
 		include __DIR__.'/../../routes.php';
 	}
 

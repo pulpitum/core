@@ -29,7 +29,16 @@ class CoreServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		$this->app['settings'] = $this->app->share(function($app)
+        {
+            return new Settings();
+        });
+        $this->app->booting(function()
+        {
+          $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+          $loader->alias('Tools', 'Pulpitum\Core\Models\Helpers\Tools');
+          $loader->alias('Settings', 'Pulpitum\Core\Facades\Settings');
+        });
 	}
 
 	/**

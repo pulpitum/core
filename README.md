@@ -59,6 +59,7 @@ Aliases array:
     'Theme'      => 'Teepluss\Theme\Facades\Theme',
     'Former'     => 'Former\Facades\Former',
     'Sentry'     => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+    'S'          => 'Stringy\StaticStringy'
 
 
 The run the following

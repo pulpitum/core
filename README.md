@@ -18,6 +18,11 @@ Add the following lines before require:
             "type": "vcs",
             "name": "pulpitum/core",
             "url": "https://github.com/pulpitum/core.git"
+        },
+        {
+            "type": "vcs",
+            "name": "pulpitum/core",
+            "url": "https://github.com/pulpitum/menu.git"
         }
     ],
 
@@ -25,7 +30,8 @@ Add the following lines before require:
 
 In the require key of composer.json file add the following line:
 
-    "pulpitum/core": "dev-master"
+    "pulpitum/core": "dev-master",
+    "pulpitum/menu": "dev-master"
     
     
 Change the minimum stability to dev.
@@ -41,7 +47,7 @@ The you have to insert the following into app/config/app.php
 
 Provider array:
 
-    'Purposemedia\Menu\MenuServiceProvider',
+    'Pulpitum\Menu\MenuServiceProvider',
     'Teepluss\Theme\ThemeServiceProvider',
     'Former\FormerServiceProvider',
     'Cartalyst\Sentry\SentryServiceProvider',
@@ -49,7 +55,7 @@ Provider array:
 
 Aliases array:
 
-    'Menu'       => 'Purposemedia\Menu\Facades\Menu',
+    'Menu'       => 'Pulpitum\Menu\Facades\Menu',
     'Theme'      => 'Teepluss\Theme\Facades\Theme',
     'Former'     => 'Former\Facades\Former',
     'Sentry'     => 'Cartalyst\Sentry\Facades\Laravel\Sentry',

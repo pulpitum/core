@@ -12,7 +12,8 @@
         "php": ">=5.3.0",
         "illuminate/support": "4.1.*",
         "teepluss/theme": "dev-master",
-        "anahkiasen/former": "dev-master"
+        "anahkiasen/former": "dev-master",
+        "danielstjules/stringy": ">=1.5.0"
     },
     "autoload": {
         "classmap": [

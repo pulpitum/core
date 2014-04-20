@@ -32,7 +32,7 @@
  * clear:        Settings::clear()
  */
 
-use Tools;
+use \Pulpitum\Core\Models\Helpers\Tools;
 use Request;
 use Eloquent;
 

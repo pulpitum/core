@@ -40,6 +40,7 @@ class CoreServiceProvider extends ServiceProvider {
           $loader->alias('Tools', 'Pulpitum\Core\Models\Helpers\Tools');
           $loader->alias('Settings', 'Pulpitum\Core\Facades\Settings');
         });
+
 	}
 
 	/**

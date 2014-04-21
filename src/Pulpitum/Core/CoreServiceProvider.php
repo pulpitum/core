@@ -1,6 +1,7 @@
 <?php namespace Pulpitum\Core;
 
 use Illuminate\Support\ServiceProvider;
+use App;
 
 class CoreServiceProvider extends ServiceProvider {
 
@@ -40,6 +41,29 @@ class CoreServiceProvider extends ServiceProvider {
           $loader->alias('Tools', 'Pulpitum\Core\Models\Helpers\Tools');
           $loader->alias('Settings', 'Pulpitum\Core\Facades\Settings');
         });
+
+		App::error(function($exception, $code)
+		{
+		    switch ($code)
+		    {
+		        case 403:
+		            return Response::view('errors.403', array(), 403);
+
+		        case 404:
+		            return App::make('\Pulpitum\Core\Controllers\FrontendController')->getNoPage();
+
+		        case 500:
+		            return "Error 500 ".$exception->getMessage();
+
+		        default:
+		            return Response::view('errors.default', array(), $code);
+		    }
+		});
+		App::down(function()
+		{
+			return App::make('\Pulpitum\Core\Controllers\FrontendController')->getMaintenancePage();
+		    //return Response::view('maintenance', array(), 503);
+		});
 
 	}
 

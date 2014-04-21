@@ -42,7 +42,7 @@ use Eloquent;
  */
 class Settings extends Eloquent {
 
-    protected $table = 'Settings';
+    protected $table = 'settings';
     protected $primaryKey = 'id';
 
     /**

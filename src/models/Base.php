@@ -24,6 +24,8 @@ class Base extends Eloquent {
 	protected  $columns = array();
     protected  $schema;
     protected  $defaultFilter = array();
+    
+    protected $guarded = array('_token', '_method', 'id');
 
     //PDF print
     public $items_per_page = 18;

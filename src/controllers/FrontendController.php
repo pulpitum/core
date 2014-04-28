@@ -3,6 +3,10 @@
 use BaseController;
 use Theme;
 use Response;
+use S;
+use App;
+use Search;
+use Input;
 
 class FrontendController extends BaseController {
 
@@ -83,5 +87,15 @@ class FrontendController extends BaseController {
             }
         }
         return "Maintenance Mode";
+    }
+
+    public function getSearch(){
+        $results = array();
+        $query = Input::get('query');
+        if(!empty($query)){
+            $search = new Search();
+            $results = $search->setString($query)->getArray();
+        }
+        return json_encode( array("suggestions"=>$results) );
     }
 }

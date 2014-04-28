@@ -35,11 +35,20 @@ class CoreServiceProvider extends ServiceProvider {
         {
             return new Settings();
         });
+
+		$searchable = array();
+		if(!isset($this->app['searchable'])){
+			$this->app['searchable'] = $searchable;
+		}else{
+			$this->app['searchable'] = array_merge($this->app['searchable'], $searchable);
+		}
+
         $this->app->booting(function()
         {
           $loader = \Illuminate\Foundation\AliasLoader::getInstance();
           $loader->alias('Tools', 'Pulpitum\Core\Models\Helpers\Tools');
           $loader->alias('Settings', 'Pulpitum\Core\Facades\Settings');
+          $loader->alias('Search', 'Pulpitum\Core\Models\Search');
         });
 
 		App::error(function($exception, $code)
@@ -53,6 +62,7 @@ class CoreServiceProvider extends ServiceProvider {
 		            return App::make('\Pulpitum\Core\Controllers\FrontendController')->getNoPage();
 
 		        case 500:
+		        	echo "<pre>";print_r($exception);echo "</pre>";
 		            return "Error 500 ".$exception->getMessage();
 
 		        default:

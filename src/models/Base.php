@@ -1,4 +1,5 @@
-<?php namespace Pulpitum\Core\Models;
+<?php 
+namespace Pulpitum\Core\Models;
 
 use Eloquent;
 use DB;
@@ -9,13 +10,17 @@ use Response;
 
 use Pulpitum\Core\Models\Helpers\Tools as Tools;
 use \Pulpitum\Core\Models\Schema as Schema;
+use Illuminate\Support\Facades\Event as LaravelEvent;
+use Venturecraft\Revisionable\Revisionable;
 
 
-class Base extends Eloquent {
+class Base extends Revisionable {
 
 	protected  $fillable = array();
 	protected  $checkboxs = array();
-    protected  $modelName = '';
+    protected  $modelName;
+    static     $name = '';
+    protected  $revisionEnabled = false;
 
 	public     $timestamps = false;
 	protected  $tabs = array();
@@ -24,6 +29,9 @@ class Base extends Eloquent {
 	protected  $columns = array();
     protected  $schema;
     protected  $defaultFilter = array();
+
+    protected $searchable_collumns = array();
+    protected $title_collumn = "id";
     
     protected $guarded = array('_token', '_method', 'id');
 
@@ -32,8 +40,21 @@ class Base extends Eloquent {
 
 	public function __construct(){
 		parent::__construct();
+        $this->modelName = static::$name;
         $this->schema = new \Schema;
 	}
+
+    public function getSearchableCollumns(){
+        return $this->searchable_collumns;
+    }
+
+    public function getTitleCollumn(){
+        return $this->title_collumn;
+    }
+
+    public function getUrl(){
+        return "/";
+    }
 
     /**
      * getCheckboxFields
@@ -139,7 +160,7 @@ class Base extends Eloquent {
      *
      * @return mixed Value.
      */
-	public function setEntidadeTitle($title = ""){
+	public function setEntityTitle($title = ""){
 		$this->title = $title;
 	}
 
@@ -164,7 +185,7 @@ class Base extends Eloquent {
      *
      * @return mixed Value.
      */
-	public function getEntidadeTitle(){
+	public function getEntityTitle(){
 		return trans($this->title);
 	}
 
@@ -295,5 +316,151 @@ class Base extends Eloquent {
         }
         return '<a href="#" class="edit-form editable editable-click" data-type="'.$input.'" data-name="'.$column['field'].'" '.$source.' data-pk="'.$dataKey.'" data-url="'.$inlineEditUrl.'" data-title="'.$column['label'].'">'.$html.'</a>';
     }
+
+    /**
+     * Create a new model.
+     *
+     * @param  array  $input
+     * @return mixed
+     */
+
+    public static function create(array $input)
+    {
+        DB::beginTransaction();
+
+        try {
+            LaravelEvent::fire(static::$name.'.creating');
+            static::beforeCreate($input);
+            $return = parent::create($input);
+            static::afterCreate($input, $return);
+            LaravelEvent::fire(static::$name.'.created');
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+
+        return $return;
+    }
+
+    /**
+     * Before creating a new model.
+     *
+     * @param  array  $input
+     * @return mixed
+     */
+    public static function beforeCreate(array $input)
+    {
+        // can be overwritten by extending class
+    }
+
+    /**
+     * After creating a new model.
+     *
+     * @param  array  $input
+     * @param  mixed  $return
+     * @return mixed
+     */
+    public static function afterCreate(array $input, $return)
+    {
+        // can be overwritten by extending class
+    }
+
+    /**
+     * Update an existing model.
+     *
+     * @param  array  $input
+     * @return mixed
+     */
+    public function update(array $input = array())
+    {
+        DB::beginTransaction();
+
+        try {
+            LaravelEvent::fire(static::$name.'.updating', $this);
+            $this->beforeUpdate($input);
+            $return = parent::update($input);
+            $this->afterUpdate($input, $return);
+            LaravelEvent::fire(static::$name.'.updated', $this);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+
+        return $return;
+    }
+
+    /**
+     * Before updating an existing new model.
+     *
+     * @param  array  $input
+     * @return mixed
+     */
+    public function beforeUpdate(array $input)
+    {
+        // can be overwritten by extending class
+    }
+
+    /**
+     * After updating an existing model.
+     *
+     * @param  array  $input
+     * @param  mixed  $return
+     * @return mixed
+     */
+    public function afterUpdate(array $input, $return)
+    {
+        // can be overwritten by extending class
+    }
+
+    /**
+     * Delete an existing model.
+     *
+     * @return mixed
+     */
+    public function delete()
+    {
+        DB::beginTransaction();
+
+        try {
+            LaravelEvent::fire(static::$name.'.deleting', $this);
+            $this->beforeDelete();
+            $return = parent::delete();
+            $this->afterDelete($return);
+            LaravelEvent::fire(static::$name.'.deleted', $this);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+
+        return $return;
+    }
+
+    /**
+     * Before deleting an existing model.
+     *
+     * @return mixed
+     */
+    public function beforeDelete()
+    {
+        // can be overwritten by extending class
+    }
+
+    /**
+     * After deleting an existing model.
+     *
+     * @param  mixed  $return
+     * @return mixed
+     */
+    public function afterDelete($return)
+    {
+        // can be overwritten by extending class
+    }
+
 
 }
